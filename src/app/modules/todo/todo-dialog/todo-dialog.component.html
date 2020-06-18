@@ -1,0 +1,21 @@
+<h1 mat-dialog-title>{{ currentAction == action.ADD ? 'Add Todo' : 'Edit Todo'}}</h1>
+<div mat-dialog-content>
+  <mat-form-field class="form-input">
+    <mat-label>Name</mat-label>
+    <input matInput
+           [formControl]="formTodo.get('name')">
+  </mat-form-field>
+  <mat-form-field class="form-input">
+    <mat-label>Status</mat-label>
+    <input matInput
+           [formControl]="formTodo.get('status')">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button
+          [mat-dialog-close]="">Cancel</button>
+  <button mat-button
+          [mat-dialog-close]="data"
+          [disabled]="formTodo.invalid || !formTodo.dirty"
+          (click)="onSave()">{{ currentAction == action.ADD ? 'Create' : 'Update'}}</button>
+</div>
